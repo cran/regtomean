@@ -1,24 +1,51 @@
 \name{replicate_data}
 \alias{replicate_data}
 \title{Replicates before and after values 100 times.}
-\description{This function replicates 100 times the before and after values giving a start and end reference.}
-\usage{replicate_data(start,end,by=NULL,Before,After,data)}
+\description{
+  This function replicates 100 times the "before" and "after" values, given a start and end reference for the population mean (\code{mu}).
+}
+\usage{
+replicate_data(start, end, Before, After, data)
+}
 \arguments{
-  \item{start}{a start value for mu.}
-  \item{end}{an end value for mu.}
-  \item{by}{an increment for the sequence, if not informed (default) the increment is caluculated as the difference between \code{end}-\code{start}.}
-  \item{Before}{a numeric vector giving the data values for the first (before) measure.}
-  \item{After}{a numeric vector giving the data values for the second (after) measure.}
-  \item{data}{an optional data frame containing the \code{before} and \code{after} variables in the formula. By \code{default} the variables are taken from \code{environment (formula)}}.}
+  \item{start}{
+    A numeric value specifying the start value for \code{mu}.
+  }
+  \item{end}{
+    A numeric value specifying the end value for \code{mu}.
+  }
+  \item{Before}{
+    A numeric vector giving the data values for the first ("before") measurement.
+  }
+  \item{After}{
+    A numeric vector giving the data values for the second ("after") measurement.
+  }
+  \item{data}{
+    An optional data frame containing the \code{Before} and \code{After} variables. If not provided, the \code{Before} and \code{After} vectors must be supplied directly.
+  }
+}
 \details{
-In order to overcome the limitation of Mee and Chua's test regarding the population mean \code{mu} a replication of the data is performed.
-
-After replicating the data the unknown population mean \code{mu} is systematically estimated over a range of values. Further estimations will be based on this new dataset.}
-\value{Return a data frame we could call \code{mee_chua} containing the values for \code{mu}, \code{before} and \code{after}.}
+  To overcome the limitations of Mee and Chua's test regarding the population mean (\code{mu}),
+  this function performs a replication of the data over a specified range of values.
+  
+  The replicated data is used for systematically estimating the unknown population mean (\code{mu}).
+  Further analyses are based on this new dataset.
+}
+\value{
+  A data frame containing the replicated dataset, which includes the columns \code{mu}, \code{before}, and \code{after}.
+}
 \references{
-Ostermann, T., Willich, Stefan N. & Luedtke, Rainer. (2008). Regression toward the mean - a detection method for unknown population mean based on Mee and Chua's algorithm. BMC Medical Research Methodology.
+  Ostermann, T., Willich, Stefan N., & Luedtke, Rainer. (2008). Regression toward the mean - a detection method for unknown population mean based on Mee and Chua's algorithm. BMC Medical Research Methodology.
 
-Galton, F. (1886). Regression towards mediocrity in heriditary stature. Journal of the Anthropological Institute (I5: 246-263).}
-\author{Daniela R. Recchia, Thomas Ostermann.}
-\seealso{\link[base]{rep}}
-\examples{replicate_data(50,60,"Before","After",data=language_test)}
+  Galton, F. (1886). Regression towards mediocrity in hereditary stature. Journal of the Anthropological Institute (15: 246-263).
+}
+\author{
+  Daniela Recchia, Thomas Ostermann.
+}
+\seealso{
+  \link[base]{rep}
+}
+\examples{
+# Example usage of replicate_data
+replicate_data(0, 100, "Before", "After", data = language_test)
+}

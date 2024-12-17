@@ -26,3 +26,4 @@ data(language_test)
 ## maybe str(language_test) ; plot(language_test) ...
 }
 \keyword{datasets}
+\author{Daniela Recchia, Thomas Ostermann.}
